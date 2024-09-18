@@ -3,11 +3,12 @@ import { swagger } from '@elysiajs/swagger'
 
 import { sendMessage } from './http/routes/send-message'
 import jwt from '@elysiajs/jwt'
+import { cors } from '@elysiajs/cors'
 import type { AuthenticatedRequest } from '../types/auth'
 import { env } from './env'
 import { authRoutes } from './http/routes/auth'
 
-export const app = new Elysia().use(swagger()).use(sendMessage).use(authRoutes)
+export const app = new Elysia().use(cors()).use(swagger()).use(sendMessage).use(authRoutes)
 
 app.use(jwt({ secret: env.JWT_SECRET }))
 
