@@ -10,10 +10,10 @@ import { LoaderCircle } from 'lucide-react'
 export default function ProtectedPage() {
 	const { isAuthenticated, loading } = useAuth()
 	const router = useRouter()
-	const [mounted, setMounted] = useState(false) // Adicionado para verificar se o componente foi montado no cliente
+	const [mounted, setMounted] = useState(false)
 
 	useEffect(() => {
-		setMounted(true) // Marca o componente como montado no cliente
+		setMounted(true)
 	}, [])
 
 	useEffect(() => {
