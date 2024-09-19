@@ -7,9 +7,17 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs'
 import { frontendTechs } from '@/utils/frontend-techs'
 import { useRouter } from 'next/navigation'
 import { backendTechs } from '@/utils/backend-techs'
+import { useTheme } from 'next-themes'
+import { useEffect, useState } from 'react'
 
 export function TechsTabs() {
+	const [hasMounted, setHasMounted] = useState(false)
+	const { theme } = useTheme()
 	const router = useRouter()
+
+	useEffect(() => {
+		setHasMounted(true)
+	})
 
 	return (
 		<Tabs
@@ -37,14 +45,22 @@ export function TechsTabs() {
 							key={tech.title}
 							className="cursor-pointer flex-col items-start p-4 justify-between shadow-2xl text-3xl h-52 w-[22rem]"
 							onClick={() => router.push(tech.link)}
-							gradientColor={'#262626'}
+							gradientColor={theme === 'dark' ? '#262626' : '#D9D9D955'}
 						>
-							<div className="size-14">{<tech.logo />}</div>
+							<div className="size-14">
+								{theme === 'light' && tech.logoDark && hasMounted ? (
+									<tech.logoDark />
+								) : (
+									<tech.logo />
+								)}
+							</div>
 							<div className="flex items-center gap-3">
 								{tech.title}{' '}
 								<ExternalLink className="size-4 text-muted-foreground" />
 							</div>
-							<p className="text-base text-zinc-200">{tech.description}</p>
+							<p className="text-start text-base dark:text-zinc-200 text-zinc-800">
+								{tech.description}
+							</p>
 						</MagicCard>
 					))}
 				</div>
@@ -56,14 +72,22 @@ export function TechsTabs() {
 							key={tech.title}
 							className="cursor-pointer flex-col items-start p-4 justify-between shadow-2xl text-3xl h-52 w-[22rem]"
 							onClick={() => router.push(tech.link)}
-							gradientColor={'#262626'}
+							gradientColor={theme === 'dark' ? '#262626' : '#D9D9D955'}
 						>
-							<div className="size-14">{<tech.logo />}</div>
+							<div className="size-14">
+								{theme === 'light' && tech.logoDark && hasMounted ? (
+									<tech.logoDark />
+								) : (
+									<tech.logo />
+								)}
+							</div>
 							<div className="flex items-center gap-3">
 								{tech.title}{' '}
 								<ExternalLink className="size-4 text-muted-foreground" />
 							</div>
-							<p className="text-base text-zinc-200">{tech.description}</p>
+							<p className="text-start text-zinc-800 text-base dark:text-zinc-200">
+								{tech.description}
+							</p>
 						</MagicCard>
 					))}
 				</div>

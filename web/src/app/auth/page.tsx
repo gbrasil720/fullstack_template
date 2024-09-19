@@ -83,6 +83,7 @@ export default function AuthPage() {
 													placeholder="*************"
 													required
 													className="text-base"
+													type="password"
 													{...field}
 												/>
 											</FormControl>
@@ -149,6 +150,7 @@ export default function AuthPage() {
 													placeholder="*************"
 													required
 													className="text-base"
+													type="password"
 													{...field}
 												/>
 											</FormControl>
@@ -173,6 +175,7 @@ export default function AuthPage() {
 													placeholder="*************"
 													required
 													className="text-base"
+													type="password"
 													{...field}
 												/>
 											</FormControl>
