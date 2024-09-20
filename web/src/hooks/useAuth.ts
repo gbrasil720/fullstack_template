@@ -84,7 +84,7 @@ export const useAuth = () => {
 				error: null,
 			})
 
-			router.push('/login')
+			router.push('/auth/signin')
 		} catch (error: any) {
 			setAuthState({
 				token: null,
@@ -106,7 +106,7 @@ export const useAuth = () => {
 			error: null,
 		})
 
-		router.push('/auth')
+		router.push('/auth/signin')
 	}
 
 	useEffect(() => {
